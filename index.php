@@ -18,7 +18,7 @@
   <ul>
     <li>
       <p>1. Pretvori zadatu rijec <b>"autobus"</b> u velika slova. </p>
-      <span></span>
+      <span><?php echo processString('autobus', 'uppercase');?></span>
     </li>
     <li>
       <p>2. Pretvori zadatu rijec <b>"KISObran"</b> u mala slova. </p>

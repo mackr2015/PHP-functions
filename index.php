@@ -1,109 +1,50 @@
-<?php 
+<?php include_once 'functions.php'; ?>
 
-// Napravi funkciju processString sa dva parametra $input i $operation
-function processString($input, $operation) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHP Functions</title>
 
-  switch ($operation ) {
-    case 'uppercase':
-      return strtoupper($input);
-    case 'lowercase':
-      return strtolower($input);
-    case 'firstcap':
-      return ucfirst($input);
-    default:
-      return 'Provide a case to return';
-  }
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
 
-}
-
-// Ispis izgleda ovako
-?>
-<p>
-<?php echo processString( 'Hello world', 'uppercase' );?>
-</p>
-
-<p>
-  <?php echo processString( 'Hello world', 'firstcap' );?>
-</p>
-<p>
-  <?php echo processString( 'Hello world', 'lowercase' );?>
-</p>
-
-<?php
-// Napiši PHP funkciju formatText($text, $operation) koja vrši transformaciju stringa.
-// Funkcija treba da unutar sebe definiše pomoćne metode koje obavljaju konkretne poslove.
-// - "slug" – pretvara tekst u URL-friendly slug
-
-// - "initials" – vraća inicijale iz imena i prezimena
-
-// - "count_vowels" – vraća broj samoglasnika u stringu
-
-// - "camelcase" – pretvara string u camelCase format
-
-function formatText($text, $operation)
-{
-    // Pomoćna metoda: slugify
-    $toSlug = function ($str) {
-        $str = strtolower(trim($str));
-        $str = preg_replace('/[^a-z0-9]+/', '-', $str);
-        return trim($str, '-');
-    };
-
-    // Pomoćna metoda: initials
-    $getInitials = function ($str) {
-        $parts = explode(' ', trim($str));
-        $initials = '';
-
-        foreach ($parts as $p) {
-            if (strlen($p) > 0) {
-                $initials .= strtoupper($p[0]);
-            }
-        }
-
-        return $initials;
-    };
-
-    // Pomoćna metoda: count vowels
-    $countVowels = function ($str) {
-        preg_match_all('/[aeiouAEIOU]/', $str, $matches);
-        return count($matches[0]);
-    };
-
-    // Pomoćna metoda: camelCase
-    $toCamelCase = function ($str) {
-        $str = strtolower($str);
-        $str = str_replace(['-', '_'], ' ', $str);
-        $str = ucwords($str);
-        $str = str_replace(' ', '', $str);
-        return lcfirst($str);
-    };
-
-    // Logika glavne funkcije
-    switch ($operation) {
-        case 'slug':
-            return $toSlug($text);
-
-        case 'initials':
-            return $getInitials($text);
-
-        case 'count_vowels':
-            return $countVowels($text);
-
-        case 'camelcase':
-            return $toCamelCase($text);
-
-        default:
-            return 'Nepoznata operacija.';
-    }
-  
-}
-
-// Primer poziva:
-echo formatText("John Doe", "initials") .'<br/>';      // JD
-echo formatText("Hello World Example", "slug") .'<br/>'; // hello-world-example
-echo formatText("programiranje", "count_vowels") .'<br/>'; // broj samoglasnika
-echo formatText("hello world", "camelcase") .'<br/>'; // helloWorld
+  <h1>PHP Functions</h1>
 
 
+  <ul>
+    <li>
+      <p>1. Pretvori zadatu rijec <b>"autobus"</b> u velika slova. </p>
+      <span></span>
+    </li>
+    <li>
+      <p>2. Pretvori zadatu rijec <b>"KISObran"</b> u mala slova. </p>
+      <span></span>
+    </li>
+    <li>
+      <p>3. Pretvori zadatu rijec <b>"skola"</b> tako da pocinje sa velikim slovom. </p>
+      <span></span>
+    </li>
+    <li>
+      <p>4. Izbroji koliko ima suglasnika na zadatu rijec <b>"Vozilo"</b>. </p>
+      <span></span>
+    </li>
+    <li>
+      <p>5. Napravi od rijeci slug tako da se mogu koristiti kao linkovi <b>"Dobio sam biciklo za rodjendan"</b>. </p>
+      <span></span>
+    </li>
+    <li>
+      <p>6. Pretvori zadatu rijec "autobus" u camelCase. </p>
+      <span></span>
+    </li>
+  </ul>
 
 
+  </div>
+
+
+</body>
+</html>
